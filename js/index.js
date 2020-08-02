@@ -14,13 +14,15 @@ document.getElementById("saveBtn").onclick = function() {saveStaticDataToFile()}
 function nextImg() {
     // console.log(index)
     if (index <= cars.length){
-        var tmpDirection = document.getElementById("direction").value;
+
+        var e = document.getElementById("direction");
+        var tmpDirection = e.options[e.selectedIndex].value;
+
         var tmpPlateNumber = document.getElementById("plateNumber").value;
     
         directions.push(tmpDirection);
         plates.push(tmpPlateNumber.concat("\n"));
 
-        document.getElementById("direction").value = "";
         document.getElementById("plateNumber").value = "";
         if (index == cars.length){
             document.getElementById("saveBtn").disabled = false;
@@ -40,7 +42,6 @@ function nextImg() {
         }
     
     if (index > cars.length){
-        document.getElementById("direction").value = "";
         document.getElementById("plateNumber").value = "";
     }    
 
