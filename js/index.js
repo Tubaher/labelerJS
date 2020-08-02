@@ -44,11 +44,15 @@ function nextImg() {
 }
 
 function saveStaticDataToFile() {
-    var blob = new Blob(directions,
+    var final_strings = directions.map(joinNumberAndPlate)
+    var blob = new Blob(final_strings,
         { type: "text/plain;charset=utf-8" });
     saveAs(blob, "static.txt");
 }
 
+function joinNumberAndPlate(num, idx) {
+    return num + " <" +  directions[idx] + ">"+plates[idx];
+}  
 
 
 function handleFileSelect(evt) {
