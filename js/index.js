@@ -5,7 +5,7 @@ var plates = [];
 var index = 1;
 
 
-///document.getElementById("nextBtn").src = "platesImages/".concat(cars[index]);
+///document.getElementById("nextBtn").src = "crops/".concat(cars[index]);
 document.getElementById("nextBtn").onclick = function() {nextImg()};
 
 document.getElementById("saveBtn").onclick = function() {saveStaticDataToFile()};
@@ -17,8 +17,8 @@ function nextImg() {
         var tmpDirection = document.getElementById("direction").value;
         var tmpPlateNumber = document.getElementById("plateNumber").value;
     
-        directions.push(tmpDirection.concat("\n"));
-        plates.push(tmpPlateNumber);
+        directions.push(tmpDirection);
+        plates.push(tmpPlateNumber.concat("\n"));
 
         document.getElementById("direction").value = "";
         document.getElementById("plateNumber").value = "";
@@ -27,7 +27,7 @@ function nextImg() {
     //console.log(directions)
 
     if (index < cars.length) {
-        cars[index] = "platesImages/".concat(cars[index])
+        cars[index] = "crops/".concat(cars[index])
         //console.log(cars.length)
         document.getElementById("plateImg").src = cars[index];
         
@@ -47,7 +47,7 @@ function saveStaticDataToFile() {
     var final_strings = directions.map(joinNumberAndPlate)
     var blob = new Blob(final_strings,
         { type: "text/plain;charset=utf-8" });
-    saveAs(blob, "static.txt");
+    saveAs(blob, "annotations.txt");
 }
 
 function joinNumberAndPlate(num, idx) {
@@ -58,12 +58,17 @@ function joinNumberAndPlate(num, idx) {
 function handleFileSelect(evt) {
     var files = evt.target.files; // FileList object
 
+    var firstImg =  "crops/".concat(files[0].name)
     // files is a FileList of File objects. List some properties.
-    document.getElementById("plateImg").src = "platesImages/".concat(files[0].name);
+    document.getElementById("plateImg").src = firstImg;
 
     for (var i = 0, f; f = files[i]; i++) {
       cars.push(f.name);
     }
+
+
+    cars[0] = firstImg
+
     
     console.log(cars)
     //document.getElementById('list').innerHTML = '<ul>' + output.join('') + '</ul>';
