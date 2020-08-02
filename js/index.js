@@ -22,6 +22,12 @@ function nextImg() {
 
         document.getElementById("direction").value = "";
         document.getElementById("plateNumber").value = "";
+        if (index == cars.length){
+            document.getElementById("saveBtn").disabled = false;
+            document.getElementById("nextBtn").disabled = true;
+            document.getElementById("direction").disabled = true;
+            document.getElementById("plateNumber").disabled = true;
+        }
     }
     
     //console.log(directions)
@@ -38,13 +44,14 @@ function nextImg() {
         document.getElementById("plateNumber").value = "";
     }    
 
+
     index = index + 1;
 
 
 }
 
 function saveStaticDataToFile() {
-    var final_strings = directions.map(joinNumberAndPlate)
+    var final_strings = cars.map(joinNumberAndPlate)
     var blob = new Blob(final_strings,
         { type: "text/plain;charset=utf-8" });
     saveAs(blob, "annotations.txt");
@@ -68,7 +75,7 @@ function handleFileSelect(evt) {
 
 
     cars[0] = firstImg
-
+    document.getElementById("nextBtn").disabled = false;
     
     console.log(cars)
     //document.getElementById('list').innerHTML = '<ul>' + output.join('') + '</ul>';
