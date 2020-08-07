@@ -134,6 +134,10 @@ function displayList(list_plate) {
 }
 
 function saveStaticDataToFile() {
+
+    var tmpPlateNumber = document.getElementById("plateNumber").value;
+    plates[index] = tmpPlateNumber;
+    
     var finalPlates = []
     for (let idx = 0; idx < plates.length; idx++) {
         if (plates[idx]!=""){
