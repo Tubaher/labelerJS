@@ -43,9 +43,6 @@ function handleFileSelect(evt) {
     //document.getElementById('list').innerHTML = '<ul>' + output.join('') + '</ul>';
   }
 
-
- 
-
 function nextImg() {
     // console.log(index)
 
@@ -72,45 +69,26 @@ function nextImg() {
     }
 
 
-    if (index <= 3) {
-        for (let idx = 0; idx < index; idx++) {
+    //Display the possible previous 5 elements
+    var staridx;
+    var endidx = index;
 
-            idEle = String(index)
-            tmpElement = document.getElementById("")
-            
-        }
-        
-    } else {
-        
+    if (index <= 4){
+        staridx = 0;
+    }else{
+        staridx = index - 5;
     }
 
-    
-    var ul = document.getElementById("dynamic-list");
-    var li = document.createElement("li");
-    li.setAttribute('id',tmpPlateNumber);
-    li.appendChild(document.createTextNode(tmpPlateNumber));
-        //ul.appendChild(li);
-        ul.insertBefore(li, ul.childNodes[0]);
+    var crop = plates.slice(staridx, endidx)
+
+    displayList(crop);
+
+}
+
+function displayList(family) {
+    for (var prop in family) {
+      document.getElementById('aaron-family').innerHTML += '<li>' + prop + '</li>';
     }
-    
-
-
-    if (index < cars.length) {
-        cars[index] = "crops/".concat(cars[index])
-        //console.log(cars.length)
-        document.getElementById("plateImg").src = cars[index];
-        carSave.push(cars[index-1])
-        
-        }
-    
-    if (index > cars.length){
-        document.getElementById("plateNumber").value = "";
-    }    
-
-
-    index = index + 1;
-
-
 }
 
 function saveStaticDataToFile() {
