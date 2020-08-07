@@ -3,13 +3,14 @@ var cars = [];
 // var directions = [];
 var plates = [];
 var index = 1;
-
+var carSave = [];
 
 ///document.getElementById("nextBtn").src = "crops/".concat(cars[index]);
 document.getElementById("nextBtn").onclick = function() {nextImg()};
 
 document.getElementById("saveBtn").onclick = function() {saveStaticDataToFile()};
 
+document.getElementById("noSaveBtn").onclick = function() {noSaveImg()};
 
 function nextImg() {
     // console.log(index)
@@ -27,6 +28,7 @@ function nextImg() {
         if (index == cars.length){
             document.getElementById("saveBtn").disabled = false;
             document.getElementById("nextBtn").disabled = true;
+            document.getElementById("noSaveBtn").disabled = true;
             // document.getElementById("direction").disabled = true;
             document.getElementById("plateNumber").disabled = true;
         }
@@ -38,6 +40,7 @@ function nextImg() {
         cars[index] = "crops/".concat(cars[index])
         //console.log(cars.length)
         document.getElementById("plateImg").src = cars[index];
+        carSave.push(cars[index-1])
         
         }
     
@@ -52,7 +55,7 @@ function nextImg() {
 }
 
 function saveStaticDataToFile() {
-    var final_strings = cars.map(joinNumberAndPlate)
+    var final_strings = carSave.map(joinNumberAndPlate)
     var blob = new Blob(final_strings,
         { type: "text/plain;charset=utf-8" });
     saveAs(blob, "annotations.txt");
@@ -78,9 +81,52 @@ function handleFileSelect(evt) {
 
     cars[0] = firstImg
     document.getElementById("nextBtn").disabled = false;
+    document.getElementById("noSaveBtn").disabled = false;
     
     console.log(cars)
     //document.getElementById('list').innerHTML = '<ul>' + output.join('') + '</ul>';
   }
+
+function noSaveImg() {
+    // console.log(index)
+    if (index <= cars.length){
+
+        // var e = document.getElementById("direction");
+        // var tmpDirection = e.options[e.selectedIndex].value;
+
+        //var tmpPlateNumber = document.getElementById("plateNumber").value;
+    
+        // directions.push(tmpDirection);
+        //plates.push(tmpPlateNumber.concat("\n"));
+
+        document.getElementById("plateNumber").value = "";
+        if (index == cars.length){
+            document.getElementById("saveBtn").disabled = false;
+            document.getElementById("nextBtn").disabled = true;
+            document.getElementById("noSaveBtn").disabled = true;
+            // document.getElementById("direction").disabled = true;
+            document.getElementById("plateNumber").disabled = true;
+        }
+    }
+    
+    //console.log(directions)
+
+    if (index < cars.length) {
+        cars[index] = "crops/".concat(cars[index])
+        //console.log(cars.length)
+        document.getElementById("plateImg").src = cars[index];
+        
+        }
+    
+    if (index > cars.length){
+        document.getElementById("plateNumber").value = "";
+    }    
+
+
+    index = index + 1;
+
+
+
+}
 
   document.getElementById('files').addEventListener('change', handleFileSelect, false);
