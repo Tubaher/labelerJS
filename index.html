@@ -17,8 +17,9 @@
 
     <div class = "container">
       <img id="plateImg" src="" alt="Plate" >
+      <button id="backBtn" type="button" disabled> Back </button>
       <button id="nextBtn" type="button" disabled> Next </button> 
-      
+
       <!-- <label>Region: </label>
       <select id="direction">
       <option value="Arica">Arica</option>
@@ -35,10 +36,12 @@
       <option value="Puerto Montt">Puerto Montt</option>
     </select> -->
     <input id="plateNumber" type="text" placeholder="Plate Number">
-    <button id="backBtn" type="button" disabled> Back </button>
     <button id="saveBtn" type="button" disabled> Save </button> 
 
     <input type="file" id="files" name="files[]" multiple />
+    <div class="row" >
+      <label>Previous 5 Plates: </label>
+    </div>
     <div class="row">
       <ul id="dynamic-list">
       </ul>
