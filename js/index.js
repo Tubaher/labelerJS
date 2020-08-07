@@ -12,7 +12,7 @@ var lenCars = 0;
 //Next Button
 document.getElementById("nextBtn").onclick = function() {nextImg()};
 //Back Button
-document.getElementById("backBtn").onclick = function() {noSaveImg()};
+document.getElementById("backBtn").onclick = function() {backImg()};
 //Save Txt
 document.getElementById("saveBtn").onclick = function() {saveStaticDataToFile()}
 //Open Files
@@ -121,21 +121,24 @@ function backImg() {
 
 function displayList(family) {
     for (var prop in family) {
-      document.getElementById('aaron-family').innerHTML += '<li>' + prop + '</li>';
+      document.getElementById('dynamic-list').innerHTML += '<li>' + prop + '</li>';
     }
 }
 
 function saveStaticDataToFile() {
-    var final_strings = cars.map(joinNumberAndPlate)
-    var blob = new Blob(final_strings,
+    var finalPlates = []
+    for (let idx = 0; idx < plates.length; idx++) {
+        if (plates[idx]!=""){
+            finalPlates.push("crops/" + cars[idx] + " " + plates[idx]+"")
+        }
+        
+    }
+    
+    var blob = new Blob(finalPlates,
         { type: "text/plain;charset=utf-8" });
     saveAs(blob, "annotations.txt");
 }
 
-function joinNumberAndPlate(num, idx) {
-    // return num + " <" +  directions[idx] + ">"+plates[idx];
-    return num + " " + plates[idx];
-}  
 
 
   
