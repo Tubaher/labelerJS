@@ -26,12 +26,18 @@ function nextImg() {
 
         document.getElementById("plateNumber").value = "";
         if (index == cars.length){
-            document.getElementById("saveBtn").disabled = false;
+            //document.getElementById("saveBtn").disabled = false;
             document.getElementById("nextBtn").disabled = true;
             document.getElementById("noSaveBtn").disabled = true;
             // document.getElementById("direction").disabled = true;
             document.getElementById("plateNumber").disabled = true;
         }
+        var ul = document.getElementById("dynamic-list");
+        var li = document.createElement("li");
+        li.setAttribute('id',tmpPlateNumber);
+        li.appendChild(document.createTextNode(tmpPlateNumber));
+        //ul.appendChild(li);
+        ul.insertBefore(li, ul.childNodes[0]);
     }
     
     //console.log(directions)
@@ -82,6 +88,7 @@ function handleFileSelect(evt) {
     cars[0] = firstImg
     document.getElementById("nextBtn").disabled = false;
     document.getElementById("noSaveBtn").disabled = false;
+    document.getElementById("saveBtn").disabled = false;
     
     console.log(cars)
     //document.getElementById('list').innerHTML = '<ul>' + output.join('') + '</ul>';
