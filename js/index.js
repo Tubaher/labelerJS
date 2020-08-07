@@ -85,6 +85,40 @@ function nextImg() {
 
 }
 
+function backImg() {
+    // console.log(index)
+
+    var tmpPlateNumber = document.getElementById("plateNumber").value;
+    plates[index] = tmpPlateNumber
+
+    index = index - 1;
+
+    //Load next img and info
+    img =   "crops/".concat(cars[index])
+    document.getElementById("plateImg").src = img;
+    document.getElementById("plateNumber").value = plates[index];
+
+    if (index == 0) {
+        //Enable buttons
+        document.getElementById("backBtn").disabled = true;        
+    }
+
+    //Display the possible previous 5 elements
+    var staridx;
+    var endidx = index;
+
+    if (index <= 4){
+        staridx = 0;
+    }else{
+        staridx = index - 5;
+    }
+
+    var crop = plates.slice(staridx, endidx)
+
+    displayList(crop);
+
+}
+
 function displayList(family) {
     for (var prop in family) {
       document.getElementById('aaron-family').innerHTML += '<li>' + prop + '</li>';
@@ -92,7 +126,7 @@ function displayList(family) {
 }
 
 function saveStaticDataToFile() {
-    var final_strings = carSave.map(joinNumberAndPlate)
+    var final_strings = cars.map(joinNumberAndPlate)
     var blob = new Blob(final_strings,
         { type: "text/plain;charset=utf-8" });
     saveAs(blob, "annotations.txt");
@@ -103,49 +137,5 @@ function joinNumberAndPlate(num, idx) {
     return num + " " + plates[idx];
 }  
 
-
-
-
-function noSaveImg() {
-    // console.log(index)
-    if (index <= cars.length){
-
-        // var e = document.getElementById("direction");
-        // var tmpDirection = e.options[e.selectedIndex].value;
-
-        //var tmpPlateNumber = document.getElementById("plateNumber").value;
-    
-        // directions.push(tmpDirection);
-        //plates.push(tmpPlateNumber.concat("\n"));
-
-        document.getElementById("plateNumber").value = "";
-        if (index == cars.length){
-            document.getElementById("saveBtn").disabled = false;
-            document.getElementById("nextBtn").disabled = true;
-            document.getElementById("noSaveBtn").disabled = true;
-            // document.getElementById("direction").disabled = true;
-            document.getElementById("plateNumber").disabled = true;
-        }
-    }
-    
-    //console.log(directions)
-
-    if (index < cars.length) {
-        cars[index] = "crops/".concat(cars[index])
-        //console.log(cars.length)
-        document.getElementById("plateImg").src = cars[index];
-        
-        }
-    
-    if (index > cars.length){
-        document.getElementById("plateNumber").value = "";
-    }    
-
-
-    index = index + 1;
-
-
-
-}
 
   
