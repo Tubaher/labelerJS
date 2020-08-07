@@ -2,45 +2,98 @@
 var cars = [];
 // var directions = [];
 var plates = [];
-var index = 1;
+var index = 0;
 var carSave = [];
 
+var lenCars = 0;
+
 ///document.getElementById("nextBtn").src = "crops/".concat(cars[index]);
+//Buttons
+//Next Button
 document.getElementById("nextBtn").onclick = function() {nextImg()};
+//Back Button
+document.getElementById("backBtn").onclick = function() {noSaveImg()};
+//Save Txt
+document.getElementById("saveBtn").onclick = function() {saveStaticDataToFile()}
+//Open Files
+document.getElementById('files').addEventListener('change', handleFileSelect, false);
 
-document.getElementById("saveBtn").onclick = function() {saveStaticDataToFile()};
 
-document.getElementById("noSaveBtn").onclick = function() {noSaveImg()};
+//Load files to the labeler
+function handleFileSelect(evt) {
+    var files = evt.target.files; // FileList object
+
+    for (var i = 0, f; f = files[i]; i++) {
+        cars.push(f.name);
+        plates.push("");
+      }
+    
+    lenCars = cars.length
+
+    
+    var firstImg =  "crops/".concat(cars[0])
+    // files is a FileList of File objects. List some properties.
+    document.getElementById("plateImg").src = firstImg;
+
+
+    document.getElementById("nextBtn").disabled = false;
+    //document.getElementById("saveBtn").disabled = false;
+    
+    //console.log(cars)
+    //document.getElementById('list').innerHTML = '<ul>' + output.join('') + '</ul>';
+  }
+
+
+ 
 
 function nextImg() {
     // console.log(index)
-    if (index <= cars.length){
 
-        // var e = document.getElementById("direction");
-        // var tmpDirection = e.options[e.selectedIndex].value;
+    var tmpPlateNumber = document.getElementById("plateNumber").value;
+    plates[index] = tmpPlateNumber
 
-        var tmpPlateNumber = document.getElementById("plateNumber").value;
-    
-        // directions.push(tmpDirection);
-        plates.push(tmpPlateNumber.concat("\n"));
+    index = index +1;
 
-        document.getElementById("plateNumber").value = "";
-        if (index == cars.length){
-            //document.getElementById("saveBtn").disabled = false;
-            document.getElementById("nextBtn").disabled = true;
-            document.getElementById("noSaveBtn").disabled = true;
-            // document.getElementById("direction").disabled = true;
-            document.getElementById("plateNumber").disabled = true;
+    //Load next img and info
+    img =   "crops/".concat(cars[index])
+    document.getElementById("plateImg").src = img;
+    document.getElementById("plateNumber").value = plates[index];
+
+    if (index == 1) {
+        //Enable buttons
+        document.getElementById("saveBtn").disabled = false;
+        document.getElementById("backBtn").disabled = false;
+
+        
+    }
+
+    if (index == lenCars - 1) {
+        document.getElementById("nextBtn").disabled = true;
+    }
+
+
+    if (index <= 3) {
+        for (let idx = 0; idx < index; idx++) {
+
+            idEle = String(index)
+            tmpElement = document.getElementById("")
+            
         }
-        var ul = document.getElementById("dynamic-list");
-        var li = document.createElement("li");
-        li.setAttribute('id',tmpPlateNumber);
-        li.appendChild(document.createTextNode(tmpPlateNumber));
+        
+    } else {
+        
+    }
+
+    
+    var ul = document.getElementById("dynamic-list");
+    var li = document.createElement("li");
+    li.setAttribute('id',tmpPlateNumber);
+    li.appendChild(document.createTextNode(tmpPlateNumber));
         //ul.appendChild(li);
         ul.insertBefore(li, ul.childNodes[0]);
     }
     
-    //console.log(directions)
+
 
     if (index < cars.length) {
         cars[index] = "crops/".concat(cars[index])
@@ -73,26 +126,7 @@ function joinNumberAndPlate(num, idx) {
 }  
 
 
-function handleFileSelect(evt) {
-    var files = evt.target.files; // FileList object
 
-    var firstImg =  "crops/".concat(files[0].name)
-    // files is a FileList of File objects. List some properties.
-    document.getElementById("plateImg").src = firstImg;
-
-    for (var i = 0, f; f = files[i]; i++) {
-      cars.push(f.name);
-    }
-
-
-    cars[0] = firstImg
-    document.getElementById("nextBtn").disabled = false;
-    document.getElementById("noSaveBtn").disabled = false;
-    document.getElementById("saveBtn").disabled = false;
-    
-    console.log(cars)
-    //document.getElementById('list').innerHTML = '<ul>' + output.join('') + '</ul>';
-  }
 
 function noSaveImg() {
     // console.log(index)
@@ -136,4 +170,4 @@ function noSaveImg() {
 
 }
 
-  document.getElementById('files').addEventListener('change', handleFileSelect, false);
+  
