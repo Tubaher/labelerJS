@@ -16,9 +16,86 @@
   <body>
 
     <div class = "container">
-      <img id="plateImg" src="" alt="Plate" >
-      <button id="backBtn" type="button" disabled> Back </button>
-      <button id="nextBtn" type="button" disabled> Next </button> 
+      <div class="row justify-content-center">
+        <h1> Labeler Plates </h1>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col">
+        <div class="card text-white bg-info mb-3" style="max-width: 25rem;">
+          <div class="card-body">
+            <h5 class="card-title">Plates Format</h5>
+            <h6 class="card-subtitle mb-2 text-white">Formato Actual BB-BB·10 (4 letras y 2 numeros)</h6>
+            <p class="card-text">
+              
+              <ul>
+                <li>
+                  18 letras disponibles
+                </li>
+                <li>
+                  B, C, D, F, G, H, J, K, L, P, R, S, T, V, W, X, Y, Z.
+                </li>
+                <li>
+                  numeros disponibles del 10 - 99
+                </li>
+                <li>
+                  fuente: FE-Schrift
+                </li>
+              </ul>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card bg-light mb-3" style="max-width: 30rem;">
+          <div class="card-body">
+            <h5 class="card-title">Plates Format</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Formato Antiguo AA·10-00 (2 letras y 4 numeros)</h6>
+            <p class="card-text">
+              
+              <ul>
+                <li>
+                  23 letras disponibles para la 1 letra
+                </li>
+                <li>
+                  A, B, C, E, F, G, H, D, K, L, N, P, R, S, T, U, V, X, Y, Z, W y M
+                </li>
+                <li>
+                  23 letras disponible para la 2da letra
+                </li>
+                <li>
+                  A, B, C, D, E, F, G, H, I, J, K, L, N, P, R, S, T, U, V, X, Y, Z y W
+                </li>
+                <li>
+                  numeros disponibles del 1000 - 9999
+                </li>
+                <li>
+                  fuente: Helvética Medium Condensed
+                </li>
+              </ul>
+            </p>
+          </div>
+        </div>
+
+      </div>
+      <br>
+      </div>
+      <div class="row justify-content-center">
+        <img class="img-fluid" alt="Plate Image" id="plateImg" src="" alt="Plate" >
+      </div>
+      <br>
+      <div class="row justify-content-center">
+        <button class="btn btn-info" id="backBtn" type="button" disabled> Back </button>
+        <button class="btn btn-light" id="nextBtn" type="button" disabled> Next </button>
+      </div>
+      
+
+
+
+
+      
+       
 
       <!-- <label>Region: </label>
       <select id="direction">
@@ -35,17 +112,28 @@
       <option value="Temuco">Temuco</option>
       <option value="Puerto Montt">Puerto Montt</option>
     </select> -->
-    <input id="plateNumber" type="text" placeholder="Plate Number">
-    <button id="saveBtn" type="button" disabled> Save </button> 
-
-    <input type="file" id="files" name="files[]" multiple />
-    <div class="row" >
-      <label>Previous 5 Plates: </label>
+    <div class="row justify-content-center">
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1">@</span>
+        </div>
+        <input id="plateNumber" type="text" class="form-control" placeholder="Plate Number">
+      </div>
     </div>
-    <div class="row">
+    
+    <div class="row justify-content-center">   
+      <button id="saveBtn" class="btn btn-info" type="button" disabled> Save </button> 
+
+      <input type="file" id="files" class="btn btn-light" name="files[]" multiple />
+    </div>
+    <br>
+    <div class="row justify-content-center" >
+      <h5>Previous 5 Plates: </h5>
+    </div>
+
+    <div class="row justify-content-center">
       <ul id="dynamic-list">
       </ul>
-    </div>
     </div>
     
 
