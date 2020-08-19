@@ -49,7 +49,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]]
+![Product Name Screen Shot][product-screenshot]
 
 This is basically an event app made with some HTML, CSS, and JavaScript. Its purpose is to label Chilean plates with two dfifferent formats. The first one is called **old one** and uses 2 letters and 4 numbers. Then, is the **new one** which uses 4 letters and 2 numbers.
 It also includes a python script which veryfy if the labels fit all the norms in both plates formats.
