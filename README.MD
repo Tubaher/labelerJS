@@ -42,12 +42,7 @@
 * [Getting Started](#getting-started)
   * [Prerequisites](#prerequisites)
   * [Installation](#installation)
-* [Usage](#usage)
-* [Roadmap](#roadmap)
-* [Contributing](#contributing)
-* [License](#license)
-* [Contact](#contact)
-* [Acknowledgements](#acknowledgements)
+* [Authors](#authors)
 
 
 
@@ -57,6 +52,8 @@
 [![Product Name Screen Shot][product-screenshot]]
 
 This is basically an event app made with some HTML, CSS, and JavaScript. Its purpose is to label Chilean plates with two dfifferent formats. The first one is called **old one** and uses 2 letters and 4 numbers. Then, is the **new one** which uses 4 letters and 2 numbers.
+It also includes a python script which veryfy if the labels fit all the norms in both plates formats.
+
 
 ### Built With
 The project uses the following tools: 
@@ -83,6 +80,11 @@ git clone https://github.com/Tubaher/labelerJS.git
 2. put your images in the **crops/** directory
 
 3. Open **index.html** in your favorite browser
+
+4. To run the python veryfier run:
+```sh
+python3 check_plates.py
+```
 
 <!-- CONTACT -->
 ## Authors
