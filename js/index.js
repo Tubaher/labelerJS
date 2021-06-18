@@ -7,6 +7,7 @@ var carSave = [];
 
 var lenCars = 0;
 
+var root_path = "crops/"
 ///document.getElementById("nextBtn").src = "crops/".concat(cars[index]);
 //Buttons
 //Next Button
@@ -31,7 +32,7 @@ function handleFileSelect(evt) {
     lenCars = cars.length
 
     
-    var firstImg =  "crops/".concat(cars[0])
+    var firstImg =  root_path.concat(cars[0])
     // files is a FileList of File objects. List some properties.
     document.getElementById("plateImg").src = firstImg;
 
@@ -52,7 +53,7 @@ function nextImg() {
     index = index +1;
 
     //Load next img and info
-    img =   "crops/".concat(cars[index])
+    img =  root_path.concat(cars[index])
     document.getElementById("plateImg").src = img;
     document.getElementById("plateNumber").value = plates[index];
 
@@ -96,7 +97,7 @@ function backImg() {
     index = index - 1;
 
     //Load next img and info
-    img =   "crops/".concat(cars[index])
+    img =  root_path.concat(cars[index])
     document.getElementById("plateImg").src = img;
     document.getElementById("plateNumber").value = plates[index];
 
@@ -141,7 +142,7 @@ function saveStaticDataToFile() {
     var finalPlates = []
     for (let idx = 0; idx < plates.length; idx++) {
         if (plates[idx]!=""){
-            finalPlates.push("crops/" + cars[idx] + " " + plates[idx]+"\n")
+            finalPlates.push(cars[idx] + " " + plates[idx]+"\n")
         }
         
     }
